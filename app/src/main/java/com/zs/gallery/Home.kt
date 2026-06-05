@@ -152,7 +152,7 @@ private val NavController.primary: State<String?>
                 val isPrimary = when (dest.domain) {
                     RouteFiles.domain -> true
                     RouteFolders.domain -> true
-                    RouteSettings.domain -> true
+                  //  RouteSettings.domain -> true
                     else -> false
                 }
 
@@ -409,14 +409,14 @@ private fun NavigationBar(
         )
 
         // Settings
-        NavigationItem(
-            label = { Label(text = textResource(R.string.settings)) },
-            icon = { Icon(imageVector = Icons.Filled.Settings, contentDescription = null) },
-            selected = primary == RouteSettings.domain,
-            onClick = { facade.initiateReviewFlow(); navController.toRoute(RouteSettings) },
-            isBottomNav = isBottomAligned,
-            colors = colors
-        )
+//        NavigationItem(
+//            label = { Label(text = textResource(R.string.settings)) },
+//            icon = { Icon(imageVector = Icons.Filled.Settings, contentDescription = null) },
+//            selected = primary == RouteSettings.domain,
+//            onClick = { facade.initiateReviewFlow(); navController.toRoute(RouteSettings) },
+//            isBottomNav = isBottomAligned,
+//            colors = colors
+//        )
     }
     // Load appropriate navigation bar.
     when {

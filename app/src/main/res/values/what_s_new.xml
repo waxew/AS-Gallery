@@ -4,10 +4,10 @@
     <string name="what_s_new_latest" translatable="false">
         <b>What\'s new</b>
         <font color='grey'>
+            \n🌟 <b>Navigation Improvements</b>: Moved Settings to the Files screen overflow menu for a cleaner interface.
+            \n🌟 <b>Localization Updates</b>: Added full support for the Galician language.
             \n🌟 <b>Themed Icon Support</b>: Added monochrome launcher icon for Android 13+ themed icons.
-            \n🌟 <b>Localization Updates</b>: Refined Spanish translations and streamlined Russian/Portuguese resources.
-            \n🌟 <b>Dependency Updates</b>: Updated AGP to 9.2.1 and core Compose libraries to latest stable versions.
-            \n🌟 <b>Performance &amp; Stability</b>: Minor cleanup and optimizations for a smoother experience.
+            \n🌟 <b>Performance &amp; Stability</b>: General optimizations and internal cleanups for a smoother experience.
         </font>
     </string>
 </resources>

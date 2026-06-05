@@ -28,6 +28,7 @@ import androidx.compose.material.icons.outlined.PlaylistRemove
 import androidx.compose.material.icons.outlined.Recycling
 import androidx.compose.material.icons.outlined.Restore
 import androidx.compose.material.icons.outlined.SelectAll
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material.icons.outlined.SupportAgent
@@ -90,6 +91,7 @@ private val EMPTY_BIN = Action(R.string.empty_bin, Icons.Outlined.PlaylistRemove
 private val STAR_APP = Action(R.string.rate_us, Icons.TwoTone.HotelClass)
 private val QUICK_SHARE = Action(R.string.beam, Icons.Filled.NearbyShare)
 private val TELEGRAM = Action(R.string.report, Icons.Outlined.SupportAgent)
+private val SETTINGS = Action.SETTINGS
 
 @SuppressLint("NewApi")
 class FilesViewModel(
@@ -212,7 +214,7 @@ class FilesViewModel(
             }
             // Handle actions for Timeline when not in selection mode
             else if (source == SOURCE_TIMELINE && !isInSelectionMode) {
-                this += STAR_APP; this += TELEGRAM
+                this += STAR_APP; this += TELEGRAM; this += SETTINGS
             }
             // Handle actions for Favorites when not in selection mode
             else if (source == SOURCE_FAV && !isInSelectionMode) {

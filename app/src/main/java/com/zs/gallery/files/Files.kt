@@ -76,6 +76,7 @@ import com.zs.compose.theme.text.Label
 import com.zs.compose.theme.text.TonalHeader
 import com.zs.core.store.MediaFile
 import com.zs.gallery.R
+import com.zs.gallery.common.Action
 import com.zs.gallery.common.SelectionTracker
 import com.zs.gallery.common.compose.FloatingActionMenu
 import com.zs.gallery.common.compose.FloatingLargeTopAppBar
@@ -90,6 +91,7 @@ import com.zs.gallery.common.compose.rememberAcrylicSurface
 import com.zs.gallery.common.compose.section
 import com.zs.gallery.common.compose.shine
 import com.zs.gallery.common.compose.source
+import com.zs.gallery.settings.RouteSettings
 import com.zs.gallery.settings.Settings
 import androidx.compose.foundation.combinedClickable as clickable
 import androidx.compose.foundation.layout.PaddingValues as Padding
@@ -123,6 +125,8 @@ fun Files(viewState: FilesViewState) {
     // actions
     val actions = viewState.actions
     val ctx = LocalContext.current
+    val navController = LocalNavController.current
+
 
     Scaffold(
         fabPosition = if (compact) FabPosition.Center else FabPosition.End,
@@ -144,7 +148,10 @@ fun Files(viewState: FilesViewState) {
 
                         else -> IconButton(
                             onClick = {
-                                facade.showSnackbar(R.string.what_s_new_latest, duration = SnackbarDuration.Indefinite)
+                                facade.showSnackbar(
+                                    R.string.what_s_new_latest,
+                                    duration = SnackbarDuration.Indefinite
+                                )
                             },
                             content = {
                                 Icon(
@@ -161,7 +168,14 @@ fun Files(viewState: FilesViewState) {
                     if (!viewState.isInSelectionMode)
                         OverflowMenu(
                             actions,
-                            onItemClicked = { viewState.onRequest(it, ctx.findActivity()) }
+                            compact = true,
+                            collapsed = 3,
+                            onItemClicked = {
+                                when (it) {
+                                    Action.SETTINGS -> navController.navigate(RouteSettings())
+                                    else -> viewState.onRequest(it, ctx.findActivity())
+                                }
+                            }
                         )
                 }
             )
@@ -187,7 +201,11 @@ fun Files(viewState: FilesViewState) {
                     )
 
                     // Divider
-                    VerticalDivider(modifier = Modifier.height(CP.large).padding(start = CP.small, end = CP.small))
+                    VerticalDivider(
+                        modifier = Modifier
+                            .height(CP.large)
+                            .padding(start = CP.small, end = CP.small)
+                    )
 
                     // overflow
                     OverflowMenu(

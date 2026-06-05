@@ -19,8 +19,11 @@
 package com.zs.gallery.common
 
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.zs.gallery.R
 
 /**
  * Represents a single item within a menu. The [label] represents the id of this item as well.
@@ -50,6 +53,8 @@ interface Action {
     ): Action = ActionImpl(label, id, icon, enabled)
 
     companion object {
+
+        val SETTINGS = Action(R.string.settings, Icons.Outlined.Settings)
 
         /**
          * @see MenuItem
