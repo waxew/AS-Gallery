@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AS Gallery</string>
+    <string name="permission_scr_title">دسترسی به رسانه‌ها</string>
+    <string name="allow">اجازه دادن</string>
+    <string name="permission_scr_desc"><b>AS Gallery</b> برای نمایش عکس‌ها و ویدیوها به دسترسی رسانه‌های دستگاه نیاز دارد.
+        <b>\n\nدر اندروید ۱۴ و بالاتر:</b>
+        <font color='grey'>\nمی‌توانید دسترسی به همه رسانه‌ها یا فقط عکس‌ها و ویدیوهای انتخابی را بدهید.</font>
+    </string>
+    <string name="photos">عکس‌ها</string>
+    <string name="settings">تنظیمات</string>
+    <string name="folders">پوشه‌ها</string>
+    <string name="loading">در حال بارگذاری</string>
+    <string name="oops_empty">فایلی پیدا نشد</string>
+    <string name="folders_scr_folder_name_sds">%1$d فایل - %2$s</string>
+    <string name="size">اندازه</string>
+    <string name="name">نام</string>
+    <string name="recent">اخیر</string>
+    <string name="dark">تیره</string>
+    <string name="light">روشن</string>
+    <string name="sync_with_system">هماهنگ با سیستم</string>
+    <string name="general">عمومی</string>
+    <string name="appearance">ظاهر</string>
+    <string name="feedback">بازخورد</string>
+    <string name="about_gallery">درباره AS Gallery</string>
+
+    <string name="msg_unknown_error">خطای ناشناخته‌ای رخ داد.</string>
+    <string name="report">گزارش</string>
+    <string name="timeline">خط زمانی</string>
+    <string name="files_source_folder_title_s">123%1$s</string>
+    <string name="files_selected_d">%1$d مورد انتخاب شد</string>
+    <string name="select_all">انتخاب همه</string>
+    <string name="bin">سطل</string>
+    <string name="recycle_bin">سطل بازیافت</string>
+    <string name="favourites">علاقه‌مندی‌ها</string>
+
+    <string name="times_factor_x_f">%1$sx</string>
+    <string name="last_modified">آخرین تغییر</string>
+    <string name="msg_error_sharing_files">هنگام اشتراک‌گذاری فایل‌ها خطایی رخ داد. دوباره تلاش کنید.</string>
+    <string name="msg_files_delete_unknown_error">هنگام حذف فایل‌ها خطایی رخ داد. دوباره تلاش کنید.</string>
+    <string name="msg_files_trash_unknown_error">هنگام انتقال فایل‌ها به سطل بازیافت خطایی رخ داد. دوباره تلاش کنید.</string>
+    <string name="trash">انتقال به سطل</string>
+    <string name="msg_files_restore_unknown_error">هنگام بازیابی فایل‌ها خطایی رخ داد. دوباره تلاش کنید.</string>
+    <string name="share">اشتراک‌گذاری</string>
+    <string name="edit">ویرایش</string>
+    <string name="delete">حذف</string>
+    <string name="info">اطلاعات</string>
+    <string name="edit_in">ویرایش با</string>
+    <string name="use_as">استفاده به‌عنوان</string>
+    <string name="set_as_wallpaper">تنظیم به‌عنوان پس‌زمینه</string>
+    <string name="like">افزودن به علاقه‌مندی‌ها</string>
+    <string name="unlike">حذف از علاقه‌مندی‌ها</string>
+    <string name="details">جزئیات</string>
+    <string name="title">عنوان</string>
+    <string name="path">مسیر</string>
+    <string name="metadata">فراداده</string>
+    <string name="msg_files_confirm_deletion"><b>حذف</b><font color='grey'>\nآیا از حذف این مورد مطمئن هستید؟ امکان بازگردانی آن وجود نخواهد داشت.</font></string>
+
+    <string name="msg_update_check_error">بررسی نسخه جدید انجام نشد. اتصال اینترنت را بررسی و دوباره تلاش کنید.</string>
+    <string name="msg_update_not_available">برنامه به‌روز است؛ نسخه جدیدی وجود ندارد.</string>
+    <string name="msg_update_available">نسخه جدیدی از AS Gallery منتشر شده است.</string>
+    <string name="msg_new_update_downloaded">به‌روزرسانی آماده نصب است.</string>
+    <string name="install">نصب</string>
+
+    <string name="lock_scr_title">تأیید هویت</string>
+    <string name="lock_scr_subtitle">ورود با اطلاعات بیومتریک</string>
+    <string name="lock_scr_desc">برای ادامه با اثر انگشت، تشخیص چهره یا روش امنیتی دستگاه هویت خود را تأیید کنید.</string>
+    <string name="msg_enroll_biometric">ابتدا احراز هویت بیومتریک را در تنظیمات دستگاه فعال کنید.</string>
+    <string name="msg_favourites_updated">علاقه‌مندی‌ها به‌روزرسانی شد.</string>
+    <string name="msg_media_player_promotion"><b>AS Gallery</b><font color='gray'>\nمرور سریع و خصوصی عکس‌ها و ویدیوها.</font></string>
+    <string name="get">دریافت</string>
+    <string name="dismiss">بستن</string>
+    <string name="msg_auth_failed">احراز هویت ناموفق بود. دوباره تلاش کنید.</string>
+    <string name="msg_auth_error_s">خطای احراز هویت: %1$s</string>
+    <string name="restore">بازیابی</string>
+    <string name="empty_bin">خالی کردن سطل</string>
+    <string name="files_d">%1$s فایل</string>
+    <string name="viewer_msg_no_wallpaper_app_found">برنامه‌ای برای تنظیم تصویر پس‌زمینه پیدا نشد.</string>
+    <string name="viewer_set_as">تنظیم به‌عنوان</string>
+    <string name="today">امروز</string>
+    <string name="trash_one_day_left">۱ روز باقی مانده</string>
+    <string name="trash_days_left_d">%1$s روز باقی مانده</string>
+    <string name="auth_confirm_biometric">تأیید بیومتریک</string>
+
+    <string name="pref_app_theme_s"><b>پوسته برنامه (%1$s)</b><font color="grey" size="14">\nحالت روشن، تیره یا هماهنگ با سیستم را انتخاب کنید.</font></string>
+    <string name="pref_immersive_view"><b>نمای تمام‌صفحه</b><font color="grey" size="14">\nنوار وضعیت و پیمایش را برای تجربه تمام‌صفحه مخفی می‌کند.</font></string>
+    <string name="pref_enable_trash_can"><b>سطل بازیافت (اندروید ۱۱+)</b><font color="grey" size="14">\nدر صورت فعال بودن، فایل‌ها ابتدا به سطل بازیافت منتقل می‌شوند.</font></string>
+    <string name="pref_grid_item_size_multiplier"><b>اندازه شبکه</b><font color="grey" size="14">\nاندازه هر تصویر در نمای شبکه‌ای را تغییر دهید.</font></string>
+    <string name="pref_colorization_strategy"><b>رنگ‌بندی خودکار <sup><font color='#ae1c27' size='10'><b>آزمایشی</b></font></sup></b><font color="grey" size="14">\nرنگ‌های رابط را بر اساس محتوای رسانه تنظیم می‌کند.</font></string>
+    <string name="pref_privacy_policy"><b>سیاست حریم خصوصی</b><font color="grey" size="14">\nمشاهده سیاست حریم خصوصی AS Gallery.</font></string>
+    <string name="pref_live_gallery"><b>گالری زنده</b><font color="grey" size="14">\nپویانمایی و پخش خودکار ویدیوها را در گالری فعال می‌کند.</font></string>
+    <string name="pref_font_scale"><b>اندازه نوشته</b><font color="grey" size="14">\nاندازه متن‌های برنامه را متناسب با نیاز خود تنظیم کنید.</font></string>
+    <string name="pref_transparent_system_bars"><b>نوارهای سیستم</b><font color="grey" size="14">\nنوارهای سیستم را برای نمایش لبه‌به‌لبه شفاف می‌کند.</font></string>
+    <string name="pref_report_an_issue"><b>گزارش مشکل</b><font color="grey" size="14">\nبرای گزارش خطا یا دریافت پشتیبانی با AS Team تماس بگیرید.</font></string>
+
+    <string-array name="pref_night_mode_entries">
+        <item>تیره</item>
+        <item>روشن</item>
+        <item>هماهنگ با سیستم</item>
+    </string-array>
+
+    <string name="version">نسخه</string>
+    <string name="version_info_s">نسخه: %1$s</string>
+    <string name="pref_secure_mode"><b>حالت امن</b><font color="grey" size="14">\nمحتوای برنامه را در صفحه برنامه‌های اخیر مخفی می‌کند.</font></string>
+    <string name="pref_app_lock_s"><b>قفل برنامه</b> (<small>%1$s</small>)<sup><font color='#ae1c27' size='10'><b> آزمایشی</b></font></sup><font color="grey" size="14">\nAS Gallery را با احراز هویت دستگاه محافظت کنید.</font></string>
+    <string name="pref_color_nav_bar"><b>رنگ نوار پیمایش</b><font color="grey" size="14">\nاز رنگ اصلی برنامه در نوار پیمایش استفاده می‌کند.</font></string>
+    <string name="about_us">درباره ما</string>
+    <string name="postfix_x_f">%1$.1fx</string>
+    <string name="system">سیستم</string>
+    <string name="join_the_beta">کانال انتشار</string>
+    <string name="update_gallery">بررسی به‌روزرسانی AS Gallery</string>
+    <string name="rate_us">مخزن AS Gallery</string>
+    <string name="share_app_label">اشتراک‌گذاری AS Gallery</string>
+    <string name="pref_dynamic_colors"><b>رنگ‌های پویا</b>\n<font color="grey" size="14">در اندروید ۱۲ و بالاتر، رنگ‌های رابط با سیستم هماهنگ می‌شوند.</font></string>
+    <string name="error">خطا</string>
+
+    <string-array name="pref_app_lock_options">
+        <item>غیرفعال</item>
+        <item>فوری</item>
+        <item>۱ دقیقه</item>
+        <item>۳۰ دقیقه</item>
+    </string-array>
+
+    <string name="pref_scr_version_by_author_s">"نسخه %1$s - <b><i>AS Team Group</i></b>"</string>
+    <string name="buy_me_a_coffee">پشتیبانی از AS Team</string>
+    <string name="msg_support_gallery"><b>AS Gallery برای مدیریت سریع و خصوصی رسانه‌ها ساخته شده است.</b>\nتوسعه توسط AS Team Group.\nبازخورد و گزارش خطا به بهتر شدن نسخه‌های بعدی کمک می‌کند.</string>
+    <string name="fuel">پشتیبانی</string>
+    <string name="viewer_scr_open_in_lens">باز کردن در Lens</string>
+    <string name="quick_share">اشتراک‌گذاری سریع</string>
+    <string name="msg_viewer_scr_no_g_lens">برای استفاده از Lens برنامه Google را نصب کنید.</string>
+    <string name="msg_files_quick_share_error">برای استفاده از این قابلیت Quick Share را نصب کنید.</string>
+    <string name="none">هیچ‌کدام</string>
+    <string name="properties">ویژگی‌ها</string>
+    <string name="pref_ambient_mode"><b>حالت محیطی</b><font color="grey">\nنورپردازی پیرامون نمایشگر رسانه را فعال می‌کند.</font></string>
+    <string name="authenticate">احراز هویت</string>
+    <string name="confirm">تأیید</string>
+    <string name="msg_favourites_modify_d">وضعیت علاقه‌مندی %1$d مورد تغییر کند؟</string>
+    <string name="add_your_language">کمک به ترجمه</string>
+    <string name="wallpaper">پس‌زمینه</string>
+    <string name="lens">Lens</string>
+    <string name="beam">ارسال</string>
+    <string name="msg_playstore_encouragement"><b>به‌روزرسانی‌های AS Gallery</b><font color='grey'>\nنسخه‌های معتبر را از کانال رسمی انتشار AS Team دریافت کنید.</font></string>
+
+    <string name="menu">منو</string>
+    <string name="home">خانه</string>
+    <string name="contact_us">تماس با ما</string>
+    <string name="exit">خروج</string>
+    <string name="profile_name">نام کاربر</string>
+    <string name="profile_default_name">کاربر AS Gallery</string>
+    <string name="change_profile_photo">تغییر تصویر پروفایل</string>
+    <string name="developed_by_as_team">توسعه توسط AS Team Group</string>
+    <string name="support_email">AS.Developers.Support@Gmail.Com</string>
+</resources>
