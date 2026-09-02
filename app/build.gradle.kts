@@ -144,6 +144,9 @@ dependencies {
     implementation(libs.bundles.coil)
     implementation(libs.bundles.icons)
 
+    // JVM unit tests under app/src/test.
+    testImplementation("junit:junit:4.13.2")
+
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
