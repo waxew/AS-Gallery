@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!--Required to provide app-lock feature.-->
+
+    <!-- برای بررسی نسخه جدید فقط متادیتای GitHub Releases خوانده می‌شود. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Required to provide app-lock feature. -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-    <!--suppress DeprecatedClassUsageInspection -->
+    <!-- suppress DeprecatedClassUsageInspection -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-    <!-- Devices running Android 12L (API level 32) or lower  -->
-    <!--suppress ScopedStorage -->
+
+    <!-- Devices running Android 12L (API level 32) or lower. -->
+    <!-- suppress ScopedStorage -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="30" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <!-- Devices running Android 13 (API level 33) or higher -->
+
+    <!-- Devices running Android 13 (API level 33) or higher. -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-    <!-- Required to access GPS Data of Media -->
-   <!-- <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />-->
-    <!--
-        To handle the reselection within the app on devices running Android 14
-        or higher if your app targets Android 14 (API level 34) or higher.
-    -->
+
+    <!-- Android 14+ limited/selected visual media access. -->
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
-    <!---->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:enableOnBackInvokedCallback="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Splash"
         tools:targetApi="31">
-        <!--Providers-->
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <!--Firebase-->
+
+            <!-- AnalyticsInitializer در نسخه AS روی پیاده‌سازی no-op قرار دارد. -->
             <meta-data
                 android:name="com.zs.gallery.impl.AnalyticsInitializer"
                 android:value="androidx.startup" />
-            <!-- Koin-->
+
+            <!-- Dependency injection. -->
             <meta-data
                 android:name="com.zs.gallery.impl.KoinInitializer"
                 android:value="androidx.startup" />
-            <!--Coil ImageLoader-->
+
+            <!-- Shared Coil image loader. -->
             <meta-data
                 android:name="com.zs.gallery.impl.CoilInitializer"
                 android:value="androidx.startup" />
         </provider>
-        <!--MainActivity-->
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout"
             android:exported="true"
             android:launchMode="singleTask">
-            <!--Intent Filters -->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--
-                Intent filter for general image and video viewing.
-                Handles common media types (image/*, video/*) via content or file URIs.
-                Used for viewing media from gallery, file managers, and camera apps.
-            -->
+
+            <!-- Open images/videos shared from camera, file manager and other apps. -->
             <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="com.android.camera.action.REVIEW" />
@@ -84,12 +86,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
-            <!--
-                Intent filter specifically for supporting JPEG-XL (.jxl) image files.
-                Includes additional path pattern matching to handle files that may not be
-                correctly recognized by MIME type alone. Also supports opening via HTTP links.
-                Useful for less commonly supported formats and fallback matching via filename.
-            -->
+
+            <!-- JPEG-XL fallback matching for file managers that do not expose image/jxl. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="com.android.camera.action.REVIEW" />
@@ -99,17 +97,13 @@
                 <data android:scheme="content" />
                 <data android:scheme="http" />
                 <data android:scheme="file" />
-
-                <!-- Hacky way to open JPEG-XL files -->
                 <data android:mimeType="image/jxl" />
                 <data android:host="*" />
-
                 <data android:mimeType="*/*" />
                 <data android:pathPattern=".*\\.jxl" />
                 <data android:pathPattern=".*\\..*\\.jxl" />
                 <data android:pathPattern=".*\\..*\\..*\\.jxl" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.jxl" />
-
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
