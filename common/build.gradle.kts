@@ -99,6 +99,9 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.media3)
 
-    // Firebase Analytics, Google Billing و Play Update/Review عمداً حذف شده‌اند.
+    // تست منطق‌های pure JVM مانند Version Comparator.
+    testImplementation("junit:junit:4.13.2")
+
+    // Firebase Analytics، Google Billing و Play Update/Review عمداً حذف شده‌اند.
     // هر سرویس آنلاین آینده باید با حساب و کلیدهای رسمی AS Team دوباره اضافه شود.
 }
