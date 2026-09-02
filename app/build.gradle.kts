@@ -39,12 +39,6 @@ kotlin {
     }
 }
 
-composeCompiler {
-    stabilityConfigurationFiles = listOf(
-        rootProject.layout.projectDirectory.file("stability_config.conf")
-    )
-}
-
 android {
     // Namespace داخلی فعلاً حفظ شده است؛ applicationId عمومی و پایدار متعلق به AS Team است.
     namespace = "com.zs.gallery"
