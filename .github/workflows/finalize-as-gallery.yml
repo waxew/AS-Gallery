@@ -1,0 +1,91 @@
+name: Finalize AS Gallery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/finalize-as-gallery.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: as-gallery-finalizer
+  cancel-in-progress: false
+
+jobs:
+  finalize-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply guarded AS finalizer
+        run: python3 scripts/finalize_as_gallery.py
+
+      - name: Reject active legacy service links
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE 'com\.googol\.android\.apps\.photos|helpline\.prime\.zs@gmail\.com|audiofy_support|github\.com/iZakirSheikh/Gallery|github\.com/sponsors/iZakirSheikh' \
+            app common README.md PRIVACY_POLICY.md fastlane docs --exclude-dir=build; then
+            echo 'Legacy executable/branding reference remains.' >&2
+            exit 1
+          fi
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Enable Gradle wrapper
+        run: chmod +x ./gradlew
+
+      - name: Unit tests and lint
+        run: ./gradlew --no-daemon :common:testCommunityDebugUnitTest :app:testCommunityDebugUnitTest :app:lintCommunityDebug
+
+      - name: Build Community Debug and Release
+        run: ./gradlew --no-daemon :app:assembleCommunityDebug :app:assembleCommunityRelease
+
+      - name: Generate SHA-256 checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-artifacts
+          find app/build/outputs/apk/community -type f -name '*.apk' -print0 | while IFS= read -r -d '' apk; do
+            cp "$apk" release-artifacts/
+          done
+          cd release-artifacts
+          sha256sum *.apk > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Upload verified build pack
+        uses: actions/upload-artifact@v4
+        with:
+          name: AS-Gallery-verified-build
+          path: release-artifacts/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit verified final source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'AS Gallery Build Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No source changes to commit.'
+            exit 0
+          fi
+          git commit -m 'release: finalize AS Gallery 1.1.0 source'
+          git push origin HEAD:main
