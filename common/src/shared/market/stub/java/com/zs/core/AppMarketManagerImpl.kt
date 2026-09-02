@@ -20,6 +20,7 @@ package com.zs.core
 
 import android.app.Activity
 import com.zs.core.market.AppMarketManager
+import com.zs.core.market.isVersionNewer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -53,7 +54,7 @@ internal class AppMarketManagerImpl : AppMarketManager {
             return
         }
 
-        if (isNewer(latestVersion, currentVersion))
+        if (isVersionNewer(latestVersion, currentVersion))
             provider(AppMarketManager.UPDATE_AVAILABLE)
         else
             provider(AppMarketManager.UPDATE_NOT_AVAILABLE)
@@ -77,28 +78,6 @@ internal class AppMarketManagerImpl : AppMarketManager {
         } finally {
             connection.disconnect()
         }
-    }
-
-    /** مقایسه ساده SemVer؛ پیشوند v و پسوندهای prerelease نادیده گرفته می‌شوند. */
-    private fun isNewer(candidate: String, current: String): Boolean {
-        fun parts(value: String): List<Int> = value
-            .trim()
-            .removePrefix("v")
-            .removePrefix("V")
-            .substringBefore('-')
-            .substringBefore('+')
-            .split('.')
-            .map { it.toIntOrNull() ?: 0 }
-
-        val a = parts(candidate)
-        val b = parts(current)
-        val size = maxOf(a.size, b.size)
-        repeat(size) { index ->
-            val left = a.getOrElse(index) { 0 }
-            val right = b.getOrElse(index) { 0 }
-            if (left != right) return left > right
-        }
-        return false
     }
 
     private companion object {
