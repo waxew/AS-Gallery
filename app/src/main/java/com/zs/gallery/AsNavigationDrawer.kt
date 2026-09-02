@@ -20,8 +20,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ContactSupport
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.ContactSupport
 import androidx.compose.material.icons.filled.FolderCopy
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
@@ -87,6 +87,8 @@ fun AsNavigationDrawer(
     val originalDirection = LocalLayoutDirection.current
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    // stringResource در Composition خوانده می‌شود تا تغییر زبان/Configuration فوراً اعمال شود.
+    val shareLabel = stringResource(R.string.share_app_label)
     val prefs = remember(context) {
         context.getSharedPreferences(PROFILE_PREFS, Context.MODE_PRIVATE)
     }
@@ -225,7 +227,7 @@ fun AsNavigationDrawer(
                                     context.startActivity(
                                         Intent.createChooser(
                                             Intent(Settings.ShareAppIntent),
-                                            context.getString(R.string.share_app_label)
+                                            shareLabel
                                         )
                                     )
                                 }
@@ -240,7 +242,7 @@ fun AsNavigationDrawer(
                         NavigationDrawerItem(
                             label = { Text(stringResource(R.string.contact_us)) },
                             selected = false,
-                            icon = { Icon(Icons.Default.ContactSupport, null) },
+                            icon = { Icon(Icons.AutoMirrored.Filled.ContactSupport, null) },
                             onClick = {
                                 closeThen { context.startActivity(Intent(Settings.FeedbackIntent)) }
                             }
