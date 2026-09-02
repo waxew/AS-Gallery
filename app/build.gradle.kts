@@ -75,14 +75,18 @@ android {
     // -------------------------------------------------------------------------
     flavorDimensions += "edition"
     productFlavors {
-        create("standard") {
+        // Primary AS Gallery edition. It intentionally has no applicationId suffix so the
+        // production package remains exactly com.asteam.gallery.
+        create("community") {
             dimension = "edition"
         }
 
-        create("community") {
+        // Store/integration variants stay isolated until AS Team-owned backend/store
+        // configuration is provisioned.
+        create("standard") {
             dimension = "edition"
-            applicationIdSuffix = ".community"
-            versionNameSuffix = "-foss"
+            applicationIdSuffix = ".standard"
+            versionNameSuffix = "-standard"
         }
 
         create("plus") {
