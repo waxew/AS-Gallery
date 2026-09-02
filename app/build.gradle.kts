@@ -1,19 +1,28 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 // -----------------------------------------------------------------------------
-// PLUGINS
+// SECURE RELEASE SIGNING
 // -----------------------------------------------------------------------------
-// AS Gallery is intentionally kept independent from the upstream Firebase project.
-// Telemetry / store integrations will be added later with AS Team owned configuration.
+// کلید انتشار هرگز داخل ریپو قرار نمی‌گیرد. در CI/سیستم توسعه، مسیر keystore و رمزها از
+// environment دریافت می‌شوند. نبود این مقادیر Build را نمی‌شکند و فقط APK release را unsigned
+// نگه می‌دارد؛ برای انتشار رسمی باید هر چهار مقدار روی همان کلید ثابت مالک تنظیم شوند.
+val releaseKeystorePath = System.getenv("AS_GALLERY_KEYSTORE_PATH")
+val releaseKeystorePassword = System.getenv("AS_GALLERY_KEYSTORE_PASSWORD")
+val releaseKeyAlias = System.getenv("AS_GALLERY_KEY_ALIAS")
+val releaseKeyPassword = System.getenv("AS_GALLERY_KEY_PASSWORD")
+val hasReleaseSigning = listOf(
+    releaseKeystorePath,
+    releaseKeystorePassword,
+    releaseKeyAlias,
+    releaseKeyPassword
+).all { !it.isNullOrBlank() }
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
 }
 
-// -----------------------------------------------------------------------------
-// KOTLIN COMPILER OPTIONS
-// -----------------------------------------------------------------------------
 kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_11
@@ -30,21 +39,14 @@ kotlin {
     }
 }
 
-// -----------------------------------------------------------------------------
-// COMPOSE COMPILER CONFIGURATION
-// -----------------------------------------------------------------------------
 composeCompiler {
     stabilityConfigurationFiles = listOf(
         rootProject.layout.projectDirectory.file("stability_config.conf")
     )
 }
 
-// -----------------------------------------------------------------------------
-// ANDROID CONFIGURATION
-// -----------------------------------------------------------------------------
 android {
-    // Internal source namespace is preserved for now to avoid a high-risk mass package move.
-    // The published Android application ID is the AS Team package below.
+    // Namespace داخلی فعلاً حفظ شده است؛ applicationId عمومی و پایدار متعلق به AS Team است.
     namespace = "com.zs.gallery"
     compileSdk { version = release(36) }
     buildFeatures { compose = true }
@@ -60,8 +62,7 @@ android {
     }
 
     defaultConfig {
-        // Stable AS Team package. Future releases must keep this ID unchanged so updates install
-        // over previous AS Gallery versions without losing user settings.
+        // این شناسه در نسخه‌های بعدی نباید تغییر کند تا آپدیت روی نسخه قبلی نصب شود.
         applicationId = "com.asteam.gallery"
         minSdk = 24
         targetSdk = 37
@@ -70,19 +71,25 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // -------------------------------------------------------------------------
-    // PRODUCT FLAVORS
-    // -------------------------------------------------------------------------
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = file(releaseKeystorePath!!)
+                storePassword = releaseKeystorePassword!!
+                keyAlias = releaseKeyAlias!!
+                keyPassword = releaseKeyPassword!!
+            }
+        }
+    }
+
     flavorDimensions += "edition"
     productFlavors {
-        // Primary AS Gallery edition. It intentionally has no applicationId suffix so the
-        // production package remains exactly com.asteam.gallery.
+        // نسخه رسمی AS Gallery؛ package دقیقاً com.asteam.gallery باقی می‌ماند.
         create("community") {
             dimension = "edition"
         }
 
-        // Store/integration variants stay isolated until AS Team-owned backend/store
-        // configuration is provisioned.
+        // کانال‌های رزروشده برای سرویس‌های آینده AS Team.
         create("standard") {
             dimension = "edition"
             applicationIdSuffix = ".standard"
@@ -96,13 +103,12 @@ android {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // BUILD TYPES
-    // -------------------------------------------------------------------------
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            if (hasReleaseSigning)
+                signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -117,9 +123,6 @@ android {
     }
 }
 
-// -----------------------------------------------------------------------------
-// APP DEPENDENCIES
-// -----------------------------------------------------------------------------
 dependencies {
     implementation(project(":common"))
 
@@ -128,6 +131,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation("androidx.compose.material3:material3")
 
     implementation(libs.navigation.compose)
     implementation(libs.toolkit.theme)
@@ -148,7 +152,6 @@ dependencies {
     implementation(libs.bundles.coil)
     implementation(libs.bundles.icons)
 
-    // JVM unit tests under app/src/test.
     testImplementation("junit:junit:4.13.2")
 
     debugImplementation(libs.androidx.compose.ui.tooling)
