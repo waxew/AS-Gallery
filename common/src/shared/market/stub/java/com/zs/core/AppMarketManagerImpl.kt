@@ -20,16 +20,89 @@ package com.zs.core
 
 import android.app.Activity
 import com.zs.core.market.AppMarketManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 
-internal class AppMarketManagerImpl() : AppMarketManager {
+/**
+ * پیاده‌سازی مستقل بازار برای AS Gallery.
+ *
+ * در نسخه فعلی هیچ Play Billing/Review یا Firebase SDK فعال نیست. بررسی نسخه فقط متادیتای
+ * آخرین GitHub Release را می‌خواند و هیچ فایل رسانه‌ای یا داده شخصی کاربر ارسال نمی‌شود.
+ */
+internal class AppMarketManagerImpl : AppMarketManager {
+
     override suspend fun initiateReviewFlow(activity: Activity) {
-        // no-op
+        // Review فروشگاهی تا زمان تعریف کانال رسمی AS Team عمداً no-op است.
     }
 
     override suspend fun initiateUpdateFlow(
         activity: Activity,
         provider: suspend (result: Float) -> Int
     ) {
-        provider(AppMarketManager.UPDATE_NOT_SUPPORTED)
+        val currentVersion = activity.packageManager
+            .getPackageInfo(activity.packageName, 0)
+            .versionName
+            .orEmpty()
+
+        val latestVersion = runCatching { fetchLatestVersion() }.getOrNull()
+        if (latestVersion == null) {
+            provider(AppMarketManager.UPDATE_NOT_SUPPORTED)
+            return
+        }
+
+        if (isNewer(latestVersion, currentVersion))
+            provider(AppMarketManager.UPDATE_AVAILABLE)
+        else
+            provider(AppMarketManager.UPDATE_NOT_AVAILABLE)
+    }
+
+    /** آخرین tag پایدار ریپو را از API عمومی GitHub می‌خواند. */
+    private suspend fun fetchLatestVersion(): String? = withContext(Dispatchers.IO) {
+        val connection = (URL(LATEST_RELEASE_API).openConnection() as HttpURLConnection).apply {
+            requestMethod = "GET"
+            connectTimeout = 5_000
+            readTimeout = 5_000
+            setRequestProperty("Accept", "application/vnd.github+json")
+            setRequestProperty("User-Agent", "AS-Gallery-Android")
+            setRequestProperty("X-GitHub-Api-Version", "2022-11-28")
+        }
+
+        try {
+            if (connection.responseCode !in 200..299) return@withContext null
+            val body = connection.inputStream.bufferedReader().use { it.readText() }
+            JSONObject(body).optString("tag_name").takeIf { it.isNotBlank() }
+        } finally {
+            connection.disconnect()
+        }
+    }
+
+    /** مقایسه ساده SemVer؛ پیشوند v و پسوندهای prerelease نادیده گرفته می‌شوند. */
+    private fun isNewer(candidate: String, current: String): Boolean {
+        fun parts(value: String): List<Int> = value
+            .trim()
+            .removePrefix("v")
+            .removePrefix("V")
+            .substringBefore('-')
+            .substringBefore('+')
+            .split('.')
+            .map { it.toIntOrNull() ?: 0 }
+
+        val a = parts(candidate)
+        val b = parts(current)
+        val size = maxOf(a.size, b.size)
+        repeat(size) { index ->
+            val left = a.getOrElse(index) { 0 }
+            val right = b.getOrElse(index) { 0 }
+            if (left != right) return left > right
+        }
+        return false
+    }
+
+    private companion object {
+        const val LATEST_RELEASE_API =
+            "https://api.github.com/repos/waxew/AS-Gallery/releases/latest"
     }
 }
