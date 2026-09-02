@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <application>
-        <!-- Disable FirebaseInitProvider -->
-        <provider
-            android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="${applicationId}.firebaseinitprovider"
-            android:enabled="false"
-            android:exported="false"
-            tools:node="remove" />
-    </application>
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+        AS Gallery editions no longer include Firebase SDKs, so no provider override is required.
+        Keeping this manifest intentionally minimal avoids false Firebase merge warnings.
+    -->
 </manifest>
