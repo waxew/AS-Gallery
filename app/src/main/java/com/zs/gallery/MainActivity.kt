@@ -385,14 +385,26 @@ class MainActivity : ComponentActivity(), SystemFacade, NavDestListener {
         val manager = AppMarketManager()
         lifecycleScope.launch {
             manager.initiateUpdateFlow(this@MainActivity){result ->
-                return@initiateUpdateFlow  when(result){
+                return@initiateUpdateFlow when (result) {
+                    AppMarketManager.UPDATE_AVAILABLE -> {
+                        val res = snackbarHostState.showSnackbar(
+                            message = resources.getText2(R.string.msg_update_available),
+                            action = resources.getText2(R.string.get),
+                            duration = SnackbarDuration.Long,
+                            icon = Icons.Outlined.NewReleases
+                        )
+                        if (res == SnackbarResult.ActionPerformed)
+                            launch(Settings.JoinBetaIntent)
+                        AppMarketManager.ACTION_IGNORE
+                    }
+
                     AppMarketManager.UPDATE_NOT_AVAILABLE -> {
                         if (report) showToast(R.string.msg_update_not_available)
                         AppMarketManager.ACTION_IGNORE
                     }
 
                     AppMarketManager.UPDATE_NOT_SUPPORTED -> {
-                        /*No-op*/
+                        if (report) showToast(R.string.msg_update_check_error)
                         AppMarketManager.ACTION_IGNORE
                     }
 
@@ -470,53 +482,16 @@ class MainActivity : ComponentActivity(), SystemFacade, NavDestListener {
         }
     }
 
-    private fun showPromoToast(
-        index: Int,
-        delay: Long = 5_000,
-    ) {
-        // This function is designed to display promotional messages identified by index.
-        // - An index of 0 indicates the "What's New" message.
-        // - An index of 1 is used to promote the media player.
-        // - An index of 2 prompts the user to buy a coffee.
-        // If a message cannot be displayed for any reason, the index is incremented by 1 until the
-        // maximum index is reached.
+    /** فقط پیام تغییرات نسخه خود AS Gallery نمایش داده می‌شود؛ تبلیغات upstream حذف شده‌اند. */
+    private fun showPromoToast(index: Int, delay: Long = 1_000) {
+        if (index != 0) return
         lifecycleScope.launch {
-            if (delay > 0) delay(delay) // delay at least some
-            when (index) {
-                // What's new
-                0 -> showSnackbar(
-                    R.string.what_s_new_latest,
-                    duration = SnackbarDuration.Indefinite,
-                    icon = Icons.Outlined.NewReleases
-                )
-                // Media player
-                1 -> {
-                    val result = snackbarHostState.showSnackbar(
-                        message = resources.getText2(R.string.msg_media_player_promotion),
-                        icon = Icons.Outlined.GetApp,
-                        duration = SnackbarDuration.Indefinite,
-                        action = resources.getText2(R.string.get),
-                        accent = Color.Amber
-                    )
-                    if (result == SnackbarResult.ActionPerformed)
-                        launchAppStore("com.prime.player")
-                }
-                // Buy me a coffee.
-                2 -> {
-                    val purchase =
-                        paymaster.purchases.value.find() { it.id == Paymaster.IAP_BUY_ME_COFFEE }
-                    if (purchase.purchased)
-                        return@launch
-                    val result = snackbarHostState.showSnackbar(
-                        resources.getText2(R.string.msg_support_gallery),
-                        duration = SnackbarDuration.Indefinite,
-                        icon = Icons.Outlined.Coffee,
-                        action = getString(R.string.fuel)
-                    )
-                    if (result == SnackbarResult.ActionPerformed)
-                        initiatePurchaseFlow(Paymaster.IAP_BUY_ME_COFFEE)
-                }
-            }
+            if (delay > 0) delay(delay)
+            showSnackbar(
+                R.string.what_s_new_latest,
+                duration = SnackbarDuration.Long,
+                icon = Icons.Outlined.NewReleases
+            )
         }
     }
 
@@ -552,56 +527,16 @@ class MainActivity : ComponentActivity(), SystemFacade, NavDestListener {
             if (preferences[Settings.KEY_SECURE_MODE])
                 window.setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE)
 
-            // Promote media player on every 5th launch
-            // TODO - properly handle promotional content.
+            // نمایش What's New فقط هنگام تغییر versionCode و ثبت شمارنده اجراها.
             lifecycleScope.launch {
-                // Show "What's New" message if the app version has changed
                 val versionCode = packageManager.getPackageInfoCompat(packageName)?.versionCode ?: 0
                 val savedVersionCode = preferences[KEY_APP_VERSION_CODE]
                 if (savedVersionCode != versionCode) {
                     preferences[KEY_APP_VERSION_CODE] = versionCode
-                    showPromoToast(0) // What's new
-                    return@launch
+                    showPromoToast(0)
                 }
-                // check if app is installed from market other than playstore.
-                if(!isInstalledFromPlayStore && isPlayStoreAvailable()){
-                    val res = snackbarHostState.showSnackbar(
-                        resources.getText2(R.string.msg_playstore_encouragement),
-                        duration = SnackbarDuration.Indefinite,
-                        icon = Icons.Outlined.Store,
-                        action = resources.getString(R.string.get)
-                    )
-                    if (res == SnackbarResult.ActionPerformed)
-                        launchAppStore("com.googol.android.apps.photos")
-                    return@launch
-                }
-                // Promotional messages are displayed only after the app has been launched
-                // more than 5 times (MIN_LAUNCHES_BEFORE_REVIEW).
-                // This ensures that users have had a chance to familiarize themselves with the app
-                // before being presented with these messages.
-                // An index of 0 is reserved for the "What's New" message and is handled separately.
-                // Promotional messages start with index 1.
-                // The index is calculated using the formula: (counter % MAX_PROMO_MESSAGES).coerceAtLeast(1).
-                // Each message is skipped by PROMO_SKIP_LAUNCHES number of launches.
-                val counter = preferences[Settings.KEY_LAUNCH_COUNTER]
-                if (counter < MIN_LAUNCHES_BEFORE_REVIEW)
-                    return@launch
-                val newCounter = counter - MIN_LAUNCHES_BEFORE_REVIEW
-                val interval = PROMO_SKIP_LAUNCHES + 1
-                // This line calculates which promotional message to show from a rotating set.
-                Log.d(
-                    TAG,
-                    "Promo(counter=$counter," +
-                            " interval=$interval," +
-                            " newCounter=$newCounter," +
-                            " skip = ${newCounter % interval}," +
-                            " index = ${(newCounter / interval) % MAX_PROMO_MESSAGES + 1} ) "
-                )
-                if (newCounter % interval == 0) {
-                    val index = (newCounter / interval) % MAX_PROMO_MESSAGES + 1
-                    Log.d(TAG, "onCreate: $index")
-                    showPromoToast(index)
-                }
+                preferences[Settings.KEY_LAUNCH_COUNTER] =
+                    preferences[Settings.KEY_LAUNCH_COUNTER] + 1
             }
         }
         // Set up the window to fit the system windows
@@ -614,15 +549,17 @@ class MainActivity : ComponentActivity(), SystemFacade, NavDestListener {
             // of whether the app is currently locked or not. This allows
             // users to view shared media directly.
             // else If authentication is required, move to the lock screen
-            Home(
-                when {
-                    intent.action == Intent.ACTION_VIEW -> RouteIntentViewer
-                    isAuthenticationRequired -> RouteLockScreen
-                    else -> RouteFiles
-                },
-                snackbarHostState,
-                navController
-            )
+            AsNavigationDrawer(navController) {
+                Home(
+                    when {
+                        intent.action == Intent.ACTION_VIEW -> RouteIntentViewer
+                        isAuthenticationRequired -> RouteLockScreen
+                        else -> RouteFiles
+                    },
+                    snackbarHostState,
+                    navController
+                )
+            }
             // Manage lifecycle-related events and listeners
             DisposableEffect(Unit) {
                 Log.d(TAG, "onCreate - DisposableEffect: $timeAppWentToBackground")

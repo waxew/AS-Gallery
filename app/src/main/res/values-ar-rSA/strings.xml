@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">مَعْرِض</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">إذن التخزين</string>
     <string name="allow">سماح</string>
     <string name="permission_scr_desc"><b>مَعْرِض الصور</b> يتطلب إذنًا للوصول إلى وحدة تخزين جهازك لعرض الصور ومقاطع الفيديو.
@@ -39,7 +39,7 @@
     <string name="general">عام</string>
     <string name="appearance">مظهر</string>
     <string name="feedback">ملاحظات</string>
-    <string name="about_gallery">حول مَعْرِض الصور</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">حدث خطأ ما. حدث خطأ غير معروف.</string>
     <string name="report">بلاغ</string>
     <string name="timeline">الأحدث</string>
@@ -99,7 +99,7 @@
     <string name="viewer_set_as">تعيين كـ</string>
     <string name="today">اليوم</string>
     <string name="trash_one_day_left">يتبقى يوم</string>
-    <string name="trash_days_left_d">بقي %1$s أيام</string>
+    <string name="trash_days_left_d">بقي %1$d أيام</string>
     <string name="auth_confirm_biometric">تأكيد القياسات الحيوية</string>
     <string name="pref_app_theme_s"><b>سمة التطبيق (%1$s)</b>
         <font color="grey" size="14">
@@ -173,7 +173,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">النظام</string>
     <string name="join_the_beta">انضم إلى بيتا</string>
-    <string name="update_gallery">تحديث المَعْرِض</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">قم بتقييمنا</string>
     <string name="share_app_label">شارك مع الأصدقاء</string>
     <string name="pref_dynamic_colors"><b>ألوان ديناميكية</b>\n<font color="grey" size="14">تبديل استخدام الألوان الديناميكية. هذه الميزة متوفرة فقط على <b>Android 12</b> أو أعلى.
@@ -186,7 +186,7 @@
         <item>1 دقيقة</item>
         <item>30 دقيقة</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"v%1$s بواسطة &lt;b&gt;&lt;i&gt;كزير"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">إشتر لي قهوة</string>
     <string name="msg_support_gallery"><b>مَعْرِض الصور بدأ للتو — وسيصبح أفضل باستمرار.</b>
 \nمعرض الصور مفتوح المصدر، مصمم بشكل جميل، ويتطور بسرعة. يمكنك دعمي من خلال

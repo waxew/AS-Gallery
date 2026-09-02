@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">Galeri</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">Depolama İzni</string>
     <string name="allow">İzin Ver</string>
     <string name="permission_scr_desc"><b>Galeri</b> uygulamasının, resim ve videoları görüntüleyebilmesi için cihazınızın depolama alanına erişim izni gereklidir.
@@ -40,7 +40,7 @@
     <string name="general">Genel</string>
     <string name="appearance">Görünüm</string>
     <string name="feedback">Geri Bildirim</string>
-    <string name="about_gallery">Galeri Hakkında</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">Bir şeyler ters gitti. Bilinmeyen bir hata oluştu.</string>
     <string name="report">Bildir</string>
     <string name="timeline">Zaman Tüneli</string>
@@ -100,7 +100,7 @@
     <string name="viewer_set_as">Farklı Ayarla</string>
     <string name="today">Bugün</string>
     <string name="trash_one_day_left">1 gün kaldı</string>
-    <string name="trash_days_left_d">%1$s gün kaldı</string>
+    <string name="trash_days_left_d">%1$d gün kaldı</string>
     <string name="auth_confirm_biometric">Biyometrik Veriyi Onayla</string>
     <string name="pref_app_theme_s"><b>Uygulama Teması (%1$s)</b>
         <font color="grey" size="14">
@@ -175,7 +175,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">Sistem</string>
     <string name="join_the_beta">Beta Programına Katıl</string>
-    <string name="update_gallery">Galeri\'yi Güncelle</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">Bizi Değerlendir</string>
     <string name="share_app_label">Arkadaşlarınla Paylaş</string>
     <string name="pref_dynamic_colors"><b>Dinamik Renkler</b>\n<font color="grey" size="14">Dinamik renklerin kullanımını açıp kapatın. Bu özellik yalnızca <b>Android 12</b> ve üzeri sürümlerde mevcuttur.
@@ -188,7 +188,7 @@
         <item>1 Dakika</item>
         <item>30 Dakika</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"v%1$s - Geliştiren: <b><i>Zakir Sheikh</i></b>"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">Bana bir kahve ısmarla</string>
     <string name="msg_support_gallery"><b>Galeri daha yolun başında ve her geçen gün daha da iyiye gidiyor.</b>
     \nGaleri açık kaynaklıdır, şık bir tasarıma sahiptir ve hızla büyümektedir. Bana destek olarak bu gelişimime devam etmemi sağlayabilirsiniz:

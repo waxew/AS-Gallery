@@ -1,0 +1,7 @@
+AS Gallery 1.1.0
+- AS Team branding and package identity
+- Persian/RTL support
+- Right-side AS navigation drawer and local profile
+- GitHub release update checker
+- Android 14 selected-media permission support
+- Legacy Firebase/Play billing/analytics detached

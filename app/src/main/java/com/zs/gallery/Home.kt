@@ -62,6 +62,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
@@ -285,6 +286,27 @@ private val REQUIRED_PERMISSIONS = buildList {
     }
 }
 
+/**
+ * دسترسی معتبر رسانه‌ای: در Android 14+ کاربر می‌تواند «همه رسانه‌ها» یا فقط موارد انتخابی
+ * را بدهد. در نسخه‌های قدیمی همان permissionهای استاندارد قبلی بررسی می‌شوند.
+ */
+private fun Context.hasRequiredMediaAccess(): Boolean {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        val fullAccess = checkSelfPermissions(
+            listOf(
+                android.Manifest.permission.READ_MEDIA_IMAGES,
+                android.Manifest.permission.READ_MEDIA_VIDEO
+            )
+        )
+        val selectedAccess = androidx.core.content.ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+        ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+        return fullAccess || selectedAccess
+    }
+    return checkSelfPermissions(REQUIRED_PERMISSIONS)
+}
+
 //
 private object RoutePermission : Route
 
@@ -297,12 +319,13 @@ private object RoutePermission : Route
 @Composable
 private fun Permission() {
     val controller = LocalNavController.current
+    val context = LocalContext.current
     // Compose the permission state.
     // Once granted set different route like folders as start.
     // Navigate from here to there.
     val permission =
         Permissions(permissions = REQUIRED_PERMISSIONS) {
-            if (!it.all { (_, state) -> state }) return@Permissions
+            if (!context.hasRequiredMediaAccess()) return@Permissions
             controller.graph.setStartDestination(RouteFiles())
             controller.navigate(RouteFiles()) {
                 popUpTo(RoutePermission()) {
@@ -561,7 +584,7 @@ fun Home(
             // Display the main content of the app using the NavGraph composable
             content = {
                 // Load start destination based on if storage permission is set or not.
-                val granted = activity.checkSelfPermissions(REQUIRED_PERMISSIONS)
+                val granted = activity.hasRequiredMediaAccess()
                 val motion = AppTheme.motionScheme
                 NavHost(
                     navController = navController,

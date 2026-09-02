@@ -92,7 +92,7 @@
     <string name="viewer_set_as">Set as</string>
     <string name="today">Today</string>
     <string name="trash_one_day_left">1 day left</string>
-    <string name="trash_days_left_d">%1$s days left</string>
+    <string name="trash_days_left_d">%1$d days left</string>
     <string name="auth_confirm_biometric">Confirm Biometric</string>
 
     <string name="pref_app_theme_s"><b>App Theme (%1$s)</b>

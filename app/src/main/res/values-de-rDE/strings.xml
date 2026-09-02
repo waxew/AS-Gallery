@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">Galerie</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">Speicherberechtigung</string>
     <string name="allow">Zulassen</string>
     <string name="permission_scr_desc"><b>Galerie</b> benötigt die Berechtigung, auf den Speicher Ihres Gerätes zuzugreifen, um Bilder und Videos anzuzeigen.
@@ -40,7 +40,7 @@
     <string name="general">Allgemein</string>
     <string name="appearance">Aussehen</string>
     <string name="feedback">Rückmeldung</string>
-    <string name="about_gallery">Über Galerie</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">Etwas ist schief gelaufen. Ein unbekannter Fehler ist aufgetreten.</string>
     <string name="report">Melden</string>
     <string name="timeline">Zeitachse</string>
@@ -102,7 +102,7 @@
     <string name="viewer_set_as">Festlegen als</string>
     <string name="today">Heute</string>
     <string name="trash_one_day_left">Noch 1 Tag</string>
-    <string name="trash_days_left_d">%1$s Tage übrig</string>
+    <string name="trash_days_left_d">%1$d Tage übrig</string>
     <string name="auth_confirm_biometric">Biometrische Bestätigung</string>
     <string name="pref_app_theme_s"><b>App Theme (%1$s)</b>
         <font color="grey" size="14">
@@ -178,7 +178,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">System</string>
     <string name="join_the_beta">Der Beta beitreten</string>
-    <string name="update_gallery">Galerie aktualisieren</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">Bewerte uns</string>
     <string name="share_app_label">Mit Freunden teilen</string>
     <string name="pref_dynamic_colors"><b>Dynamische Farben</b>\n<font color="grey" size="14">Umschalten der Verwendung dynamischer Farben. Diese Funktion ist nur auf <b>Android 12</b> oder höher verfügbar.
@@ -191,7 +191,7 @@
         <item>1 Min</item>
         <item>30 Min</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"v%1$s von <b><i>Zakir Scheich</i></b>"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">Spendiere mir einen Kaffee</string>
     <string name="msg_support_gallery">Die Galerie <b>beginnt gerade – und es wird nur noch besser.</b>
     \nGalerie ist Open Source, schön gestaltet und wächst schnell. Du kannst mich unterstützen

@@ -458,34 +458,21 @@ private fun Sponsor(modifier: Modifier = Modifier) {
                 content = {
                     val facade = LocalSystemFacade.current
 
-                    // RateUs
+                    // مخزن رسمی AS Gallery؛ تا زمان انتشار در فروشگاه، Rate/Release از GitHub انجام می‌شود.
                     FilledTonalButton(
                         stringResource(R.string.rate_us),
                         icon = Icons.Outlined.RateReview,
-                        onClick = {
-                            if (BuildConfig.FLAVOR != BuildConfig.FLAVOR_COMMUNITY)
-                                facade.launchAppStore()
-                            else
-                                facade.launch(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/iZakirSheikh/Gallery")))
-                        },
+                        onClick = { facade.launch(Settings.GithubIntent) },
                         colors = ButtonDefaults.filledTonalButtonColors(
-                            backgroundColor = AppTheme.colors.background(
-                                4.dp
-                            )
+                            backgroundColor = AppTheme.colors.background(4.dp)
                         )
                     )
 
-                    // Coffee
+                    // کانال پشتیبانی رسمی AS Team؛ هیچ پرداخت upstream از این صفحه فراخوانی نمی‌شود.
                     Button(
                         stringResource(R.string.buy_me_a_coffee),
                         icon = Icons.Outlined.DataObject,
-                        onClick = {
-                            when(BuildConfig.FLAVOR){
-                                BuildConfig.FLAVOR_COMMUNITY -> facade.launch(Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("https://github.com/sponsors/iZakirSheikh")))
-                                else -> facade.initiatePurchaseFlow(Paymaster.IAP_BUY_ME_COFFEE)
-                            }
-                        },
+                        onClick = { facade.launch(Settings.FeedbackIntent) },
                     )
                 }
             )
@@ -507,8 +494,6 @@ private fun ColumnScope.AboutUs() {
             )
         },
         footer = {
-            if (BuildConfig.FLAVOR == BuildConfig.FLAVOR_COMMUNITY)
-                return@BaseListItem Spacer(Modifier)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(CP.medium),
@@ -519,7 +504,7 @@ private fun ColumnScope.AboutUs() {
                     TextButton(
                         textResource(R.string.join_the_beta),
                         onClick = { facade.launch(Settings.JoinBetaIntent) },
-                        enabled = false
+                        enabled = true
                     )
                 }
             )
@@ -539,6 +524,15 @@ private fun ColumnScope.AboutUs() {
         modifier = Modifier
             .clip(AppTheme.shapes.medium)
             .clickable { facade.launch(Settings.PrivacyPolicyIntent) },
+    )
+
+    // اطلاعات تماس رسمی AS Team در About.
+    Preference(
+        text = textResource(R.string.support_email),
+        icon = Icons.Outlined.BugReport,
+        modifier = Modifier
+            .clip(AppTheme.shapes.medium)
+            .clickable { facade.launch(Settings.FeedbackIntent) },
     )
 
     Row(

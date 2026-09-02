@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">Galeria</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">Uprawnienie do pamięci</string>
     <string name="allow">Zezwól</string>
     <string name="permission_scr_desc"><b>Galeria</b> wymaga uprawnienia dostępu do
@@ -41,7 +41,7 @@
     <string name="general">Ogólne</string>
     <string name="appearance">Wygląd</string>
     <string name="feedback">Informacja zwrotna</string>
-    <string name="about_gallery">O aplikacji</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">Coś poszło nie źle. Wystąpił nieznany błąd.</string>
     <string name="report">Zgłoś</string>
     <string name="timeline">Oś czasu</string>
@@ -103,7 +103,7 @@
     <string name="viewer_set_as">Ustaw jako</string>
     <string name="today">Dziś</string>
     <string name="trash_one_day_left">1 dzień pozostał</string>
-    <string name="trash_days_left_d">%1$s dni pozostało</string>
+    <string name="trash_days_left_d">%1$d dni pozostało</string>
     <string name="auth_confirm_biometric">Potwierdź biometrią</string>
     <string name="pref_app_theme_s"><b>Motyw aplikacji %1$s </b>          <font color="grey" size="14">              \nDostosuj wygląd aplikacji, wybierając motyw Nocny, Dzienny lub Systemowy.           </font>     </string>
     <string name="pref_immersive_view"><b>Tryb pełnoekranowy </b>          <font color="grey" size="14">              \nUkryj pasek stanu i pasek nawigacji, aby uzyskać pełnoekranowe środowisko bez rozpraszaczy.    </font>     </string>
@@ -172,7 +172,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">System</string>
     <string name="join_the_beta">Dołącz do Beta</string>
-    <string name="update_gallery">Zaktualizuj Galerię</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">Oceń nas</string>
     <string name="share_app_label">Podziel się z przyjaciółmi</string>
     <string name="pref_dynamic_colors"><b>Kolory dynamiczne</b>\n<font color="grey" size="14">Przełącz użycie dynamicznych kolorów. Ta funkcja jest dostępna tylko na <b>Androidzie 12</b> lub nowszym.
@@ -185,7 +185,7 @@
         <item>1 minuta</item>
         <item>30 minut</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"w%1$s przez <b> <i>Zakir Sheikh</i> </b>"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">Postaw mi kawę</string>
     <string name="msg_support_gallery"><b>Galeria dopiero się zaczyna — i będzie się tylko poprawiać.</b>
     \nGaleria jest otwartoźródłowa, pięknie zaprojektowana i szybko się rozwija. Możesz ją wspierać,

@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">图库</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">存储权限</string>
     <string name="allow">允许</string>
     <string name="permission_scr_desc"><b>图库</b>需要权限访问您的  
@@ -41,7 +41,7 @@
     <string name="general">概况</string>
     <string name="appearance">外观</string>
     <string name="feedback">反馈</string>
-    <string name="about_gallery">关于相册</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">出错了。发生未知错误。</string>
     <string name="report">举报</string>
     <string name="timeline">时间轴</string>
@@ -173,7 +173,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">系统</string>
     <string name="join_the_beta">加入测试版</string>
-    <string name="update_gallery">更新相册</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">评价我们</string>
     <string name="share_app_label">与好友共享</string>
     <string name="pref_dynamic_colors"><b>动态颜色</b>\n<font color="grey" size="14">切换动态颜色的使用。 此功能仅可在 <b>Android 12</b> 或更高版本上使用。
@@ -186,7 +186,7 @@
         <item>1 分钟</item>
         <item>30 分钟</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"由 <b><i>Zakir Sheikh</i></b> 创建的第 v%1$s 版"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">给我买一杯咖啡</string>
     <string name="msg_support_gallery"><b>图库才刚刚起步——未来只会更好。</b>
 \n图库是开源的，设计精美，发展迅速。你可以通过以下方式支持我：

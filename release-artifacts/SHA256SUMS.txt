@@ -1,0 +1,2 @@
+f98151671a56632b23f41df1d272d2f3bd79bb70e5712600a336f13d2aa07894  app-community-debug.apk
+f7c8ca0f629420206db14cd5a08430ec6b3ac86c1dbf6248d506e8707c8e1970  app-community-release-unsigned.apk

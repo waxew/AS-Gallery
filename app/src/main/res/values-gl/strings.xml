@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">Galería</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">Permiso de almacenaxe</string>
     <string name="allow">Conceder</string>
     <string name="permission_scr_desc"><b>Galería</b> precisa o permiso para acceder a
@@ -41,7 +41,7 @@
     <string name="general">Xeral</string>
     <string name="appearance">Aparencia</string>
     <string name="feedback">Suxestións</string>
-    <string name="about_gallery">Sobre Galería</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">Algo fallou, aconteceu un erro descoñecido.</string>
     <string name="report">Informar</string>
     <string name="timeline">Cronoloxía</string>
@@ -103,7 +103,7 @@
     <string name="viewer_set_as">Establecer como</string>
     <string name="today">Hoxe</string>
     <string name="trash_one_day_left">Queda 1 día</string>
-    <string name="trash_days_left_d">Quedan %1$s días</string>
+    <string name="trash_days_left_d">Quedan %1$d días</string>
     <string name="auth_confirm_biometric">Confirmar biometría</string>
     <string name="pref_app_theme_s"><b>Decorado da app (%1$s)</b>
         <font color="grey" size="14">
@@ -180,7 +180,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">Sistema</string>
     <string name="join_the_beta">Unirse á Beta</string>
-    <string name="update_gallery">Actualizar Galería</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">Valóranos</string>
     <string name="share_app_label">Compartir coas amizades</string>
     <string name="pref_dynamic_colors"><b>Cores dinámicas</b>\n<font color="grey" size="14">Control para usar as cores dinámicas. Esta característica só está dispoñible para  <b>Android 12</b> ou superior.
@@ -193,7 +193,7 @@
         <item>1 Min</item>
         <item>30 Min</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"v%1$s por <b><i>Zakir Sheikh</i></b>"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">Convídame a un café</string>
     <string name="msg_support_gallery"><b>Galería está nos seus inicios — e mellorando a cada paso.</b>
     \nGalería é de código aberto, ben deseñada e medra moi rápido. Podes axudarme

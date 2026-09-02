@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">گیلری</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">اسٹوریج کی اجازت</string>
     <string name="allow">اجازت دیں</string>
     <string name="permission_scr_desc"><b>گیلری</b> کو آپ کے
@@ -40,7 +40,7 @@
     <string name="general">جنرل</string>
     <string name="appearance">ظہور</string>
     <string name="feedback">تاثرات</string>
-    <string name="about_gallery">گیلری کے بارے میں</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">کچھ غلط ہو گیا ہے۔ ایک نامعلوم خرابی پیش آ گئی ہے۔.</string>
     <string name="report">اطلاع دیں</string>
     <string name="timeline">ٹائم لائن</string>
@@ -100,7 +100,7 @@
     <string name="viewer_set_as">سیٹ کریں</string>
     <string name="today">آج</string>
     <string name="trash_one_day_left">1 دن باقی</string>
-    <string name="trash_days_left_d">%1$s دن باقی</string>
+    <string name="trash_days_left_d">%1$d دن باقی</string>
     <string name="auth_confirm_biometric">بایو میٹرک تصدیق</string>
     <string name="pref_app_theme_s"><b>ایپ کا تھیم (%1$s)</b>
         <font color="grey" size="14">
@@ -170,7 +170,7 @@
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">نظام</string>
     <string name="join_the_beta">بیٹا میں شامل ہوں</string>
-    <string name="update_gallery">گیلری اپڈیٹ</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">ہمیں ریٹ کریں</string>
     <string name="share_app_label">دوستوں سے شیئر کریں</string>
     <string name="pref_dynamic_colors"><b>متحرک رنگ</b>\n<font color="grey" size="14">متحرک رنگوں کے استعمال کو آن یا آف کریں۔ یہ خصوصیت صرف <b>اینڈرائیڈ 12</b> یا اس سے اعلیٰ پر دستیاب ہے۔
@@ -182,7 +182,7 @@
         <item>۱ منٹ</item>
         <item>۳۰ منٹ</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"v%1$s توسط <b><i>ذاکر شیخ</i></b>"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">کافی کا ٹپ دیں</string>
     <string name="msg_support_gallery"><b>گیلری ابھی شروع ہو رہی ہے — اور یہ مسلسل بہتر ہو رہی ہے۔</b>
     \nگیلری اوپن سورس ہے، خوبصورتی سے ڈیزائن کی گئی ہے، اور تیزی سے بڑھ رہی ہے۔ آپ میری مدد کر سکتے ہیں:

@@ -15,7 +15,7 @@
        5. The snackbar message should have this structure: Title\n bold + experimental + message.
           The string resources should follow the above rules strictly
      -->
-    <string name="app_name">Галерея</string>
+    <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">Доступ до сховища</string>
     <string name="allow">Дозволити</string>
     <string name="permission_scr_desc"><b>Галерея</b> вимагає дозволу на доступ до сховища вашого 
@@ -41,7 +41,7 @@
     <string name="general">Загальні</string>
     <string name="appearance">Вигляд</string>
     <string name="feedback">Відгук</string>
-    <string name="about_gallery">Про Галерею</string>
+    <string name="about_gallery">About AS Gallery</string>
     <string name="msg_unknown_error">Щось пішло не так. Сталася невідома помилка.</string>
     <string name="report">Повідомити</string>
     <string name="timeline">Хронологія</string>
@@ -103,7 +103,7 @@
     <string name="viewer_set_as">Встановити як</string>
     <string name="today">Сьогодні</string>
     <string name="trash_one_day_left">Лишився 1 день</string>
-    <string name="trash_days_left_d">%1$s днів лишилося</string>
+    <string name="trash_days_left_d">%1$d днів лишилося</string>
     <string name="auth_confirm_biometric">Підтвердити біометрику</string>
     <string name="pref_app_theme_s"><b>Тема застосунку</b>
         <font color="grey" size="14">
@@ -181,7 +181,7 @@
     <string name="postfix_x_f">%1$.1f р.</string>
     <string name="system">Системні</string>
     <string name="join_the_beta">Приєднатися до бети</string>
-    <string name="update_gallery">Оновити Галерею</string>
+    <string name="update_gallery">Update AS Gallery</string>
     <string name="rate_us">Оцінити нас</string>
     <string name="share_app_label">Поділитися з друзями</string>
     <string name="pref_dynamic_colors"><b>Динамічні кольори</b>\n<font color="grey" size="14">Увімкнути використання динамічних кольорів. Ця функція доступна лише на <b>Android 12</b> або новіше.
@@ -194,7 +194,7 @@
         <item>1 хв</item>
         <item>30 хв</item>
     </string-array>
-    <string name="pref_scr_version_by_author_s">"v%1$s розроблена <b><i>Zakir Sheikh</i></b>"</string>
+    <string name="pref_scr_version_by_author_s">v%1$s by AS Team Group</string>
     <string name="buy_me_a_coffee">Пригостити мене кавою</string>
     <string name="msg_support_gallery">&lt;b&gt;Галерея починається просто з початку і краща. 
     \nГалерея має відкритий вихідний код, прекрасний дизайн, і швидко розвивається. Ви можете дозволити мені продовжувати
