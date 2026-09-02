@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <!--
-    Naming convention for string resources:
-     - The string can be styled following the rules of styling without CDATA, as the toolkit does not support CDATA.
-     - Keep default values for every resource referenced from code so all locales can safely fall back.
-    -->
+    <!-- Default resources remain complete so every locale can safely fall back to English. -->
     <string name="app_name">AS Gallery</string>
     <string name="permission_scr_title">Storage Permission</string>
     <string name="allow">Allow</string>
@@ -12,7 +8,7 @@
         device\'s storage to display images and videos.
         <b>\n\nOn Android 14 or higher:</b>
         <font color='grey'>
-            \n  1. Please select <b>Allow all</b> in the permission dialog for the app to function correctly.
+            \n  1. You can allow all media or choose selected photos and videos.
         </font>
     </string>
     <string name="photos">Photos</string>
@@ -67,8 +63,9 @@
         <font color='grey'>\nAre you sure you want to delete this? You won\'t be able to get it back
         </font>
     </string>
-    <string name="msg_update_check_error">Oops! Something went wrong while checking for updates.</string>
+    <string name="msg_update_check_error">Could not check for updates. Check your connection and try again.</string>
     <string name="msg_update_not_available">You’re all set! No updates available.</string>
+    <string name="msg_update_available">A newer AS Gallery release is available.</string>
     <string name="msg_new_update_downloaded">Update ready! Installation can proceed now.</string>
     <string name="install">Install</string>
 
@@ -80,8 +77,8 @@
     <string name="msg_enroll_biometric">Enable biometric authentication in settings.</string>
 
     <string name="msg_favourites_updated">Favorites updated!</string>
-    <string name="msg_media_player_promotion"><b>New Media Player App!</b>
-        <font color='gray'>\nCheck out our media player for music and video playback.</font>
+    <string name="msg_media_player_promotion"><b>AS Gallery</b>
+        <font color='gray'>\nPrivate and fast photo and video browsing.</font>
     </string>
     <string name="get">Get</string>
 
@@ -180,9 +177,9 @@
     <string name="about_us">About us</string>
     <string name="postfix_x_f">%1$.1fx</string>
     <string name="system">System</string>
-    <string name="join_the_beta">Join the Beta</string>
-    <string name="update_gallery">Update AS Gallery</string>
-    <string name="rate_us">Rate AS Gallery</string>
+    <string name="join_the_beta">Release channel</string>
+    <string name="update_gallery">Check for AS Gallery update</string>
+    <string name="rate_us">AS Gallery repository</string>
     <string name="share_app_label">Share AS Gallery</string>
     <string name="pref_dynamic_colors"><b>Dynamic Colors</b>\n<font color="grey" size="14">Toggle the usage of dynamic colors. This feature is available only on <b>Android 12</b> or higher.</font></string>
     <string name="error">Error</string>
@@ -204,7 +201,7 @@
     <string name="fuel">Support</string>
     <string name="viewer_scr_open_in_lens">Open in Lens</string>
     <string name="quick_share">Quick Share</string>
-    <string name="msg_viewer_scr_no_g_lens">Install the Google app to use lens</string>
+    <string name="msg_viewer_scr_no_g_lens">Install the Google app to use Lens</string>
     <string name="msg_files_quick_share_error">Install the Quick Share app to use this feature.</string>
     <string name="none">None</string>
     <string name="properties">Properties</string>
@@ -212,11 +209,22 @@
     <string name="authenticate">Authenticate</string>
     <string name="confirm">Confirm</string>
     <string name="msg_favourites_modify_d">Modify %1$d items in Favorites?</string>
-    <string name="add_your_language">Add Your Language</string>
+    <string name="add_your_language">Help translate</string>
     <string name="wallpaper">Wallpaper</string>
     <string name="lens">Lens</string>
     <string name="beam">Beam</string>
     <string name="msg_playstore_encouragement"><b>AS Gallery updates</b>
         <font color='grey'>\nGet trusted updates and new features from the official AS Team release channel.</font>
     </string>
+
+    <!-- AS Team shared drawer / identity resources. -->
+    <string name="menu">Menu</string>
+    <string name="home">Home</string>
+    <string name="contact_us">Contact us</string>
+    <string name="exit">Exit</string>
+    <string name="profile_name">Profile name</string>
+    <string name="profile_default_name">AS Gallery User</string>
+    <string name="change_profile_photo">Change profile photo</string>
+    <string name="developed_by_as_team">Develop by AS Team Group</string>
+    <string name="support_email">AS.Developers.Support@Gmail.Com</string>
 </resources>
