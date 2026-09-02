@@ -10,3 +10,9 @@
 local.properties
 /app/crowdin.yml
 /.idea/
+
+# AS Gallery private service/signing configuration must never be committed.
+/app/google-services.json
+*.jks
+*.keystore
+keystore.properties
